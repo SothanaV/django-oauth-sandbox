@@ -1,0 +1,13 @@
+http://localhost:8000/o/authorize/?response_type=code&client_id=W4zQ7OCrHqpYZScG6jWjQI9LRYHwt9dxuZwq6ZWA&redirect_uri=http://localhost:8000/
+
+curl -X POST \
+    -H "Cache-Control: no-cache" \
+    -H "Content-Type: application/x-www-form-urlencoded" \
+    http://127.0.0.1:8000/o/token/ \
+    -d "client_id=W4zQ7OCrHqpYZScG6jWjQI9LRYHwt9dxuZwq6ZWA" \
+    -d "client_secret=2IbYtfRAVmbnmZ6kuhbcP4VPtRUDsy6i9GTETBaN2IbSxvCpgpEayAeLrCbYlqXv8GhQuxIvflnRrBecxlJsATnVDzOUmj2MKvaEvvXZxzPRc9fbNK67YdaRkXdEsyWw" \
+    -d "code=BOSs60Yg0PoJNZtAcbMFzm33I9X62h" \
+    -d "redirect_uri=http://localhost:8000/" \
+    -d "grant_type=authorization_code"
+
+curl -X POST -d "client_id=W4zQ7OCrHqpYZScG6jWjQI9LRYHwt9dxuZwq6ZWA&client_secret=2IbYtfRAVmbnmZ6kuhbcP4VPtRUDsy6i9GTETBaN2IbSxvCpgpEayAeLrCbYlqXv8GhQuxIvflnRrBecxlJsATnVDzOUmj2MKvaEvvXZxzPRc9fbNK67YdaRkXdEsyWw&grant_type=authorization_code&code=z7WUIW23C7sHaOdTVBrz2ed3zmhsTo&redirect_uri=http://localhost:8000/" http://localhost:8000/o/token/
