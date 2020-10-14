@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_social_auth',
-
+    'social_django',
+    'varpauth',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +138,37 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTHENTICATION_BACKENDS = (
-    
     'django.contrib.auth.backends.ModelBackend',
+    'varpauth.backend.CustomOAuth2',
 )
+
+OAUTH_SERVER_NAME = 'varpauth'
+
+SOCIAL_AUTH_PIPELINE = [ 
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_by_email',
+]
+
+# # OAUTH_SERVER_BASEURL = 'id.localhost:8000'
+# OAUTH_SERVER_BASEURL = 'auth.localhost.com'
+# SOCIAL_AUTH_CUSTOM_KEY = 'j3JaoASDmwB6pvVbQRqIHKQrYqmkhiAvNYOjwtCE'
+# SOCIAL_AUTH_CUSTOM_SECRET = 'LbSPjabO7ZDJ2joeCkxEjT5scfVzw2REI8LZNYbcnnUfYpICfYJE8lnuUfyNCQFsgi09Ch6sKzASLmrjNKwEqMo0K2Cd8KAJZ6kbYDHy8hdVdMpUXBbVmS9YjkQfnYNR'
+
+# OAUTH_SERVER_BASEURL='auth.ei.team'
+# SOCIAL_AUTH_CUSTOM_KEY='FZTda7iyCCH8vtkaXG0Za6oo2YRxc0JSvKUvpl3N'
+# SOCIAL_AUTH_CUSTOM_SECRET='eEC5Q8e6zzIWnHJEbD3dmWGrIGimWUowxrHhMmTJX1HgMDk2kvVWonc8gJFrHWhtq4LcQObOZbXbwtdbklWW31Vqri4UggvH4HIb6FQ0MBYVQfuEgGyAqd2h7HGAMjpE'
+
+OAUTH_SERVER_BASEURL = 'auth.dev.itrashyou.com'
+SOCIAL_AUTH_VARPAUTH_KEY = 'mZBepKZObDaAF02pH8axjLS3CsX0GKT8fpgPRQcd'
+SOCIAL_AUTH_VARPAUTH_SECRET = '6H6LGrRqqyVzmJTRmgUva4YvM04n1kNZP37gh3upBwVFxS08MF2WNLjwVA0dtQJZZs5oIUq1EqjSYFnSVt3cxzelsxpw7aF7X8w72rs67bNPG97BpEHPOhr31HO3Hmk1'
+
+LOGIN_REDIRECT_URL='app:home'
+
+SOCIAL_AUTH_REDIRECT_IS_HTTPS=False
