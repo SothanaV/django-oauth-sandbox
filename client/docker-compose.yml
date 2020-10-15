@@ -1,15 +1,32 @@
 version: '3.3'
+networks:
+    proxy:
+        external: true
+    internal:
+        external: false
 services: 
     db:
         image: postgres:11.3-alpine
         env_file:
             - .env
+        networks: 
+            - internal
     backend:
         build: ./backend
         command: sh runserver.sh
         volumes: 
             - ./backend:/backend
-        ports: 
-            - 8001:8000
+        # ports: 
+        #     - 8001:8000
         env_file: 
             - .env
+        networks: 
+            - internal
+            - proxy
+        container_name: varpauth
+        labels: 
+            - "traefik.frontend.entryPoints=http,https"
+            - "traefik.frontend.rule=Host:varp.localhost.com;PathPrefix:/"
+            - traefik.backend=varpauth
+            - traefik.port=8000
+            - traefik.docker.network=proxy

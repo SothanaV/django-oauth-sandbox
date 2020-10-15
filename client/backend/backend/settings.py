@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET', None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_social_auth',
     'social_django',
     'varpauth',
     'app',
@@ -156,10 +155,9 @@ SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.social_auth.associate_by_email',
 ]
 
-# # OAUTH_SERVER_BASEURL = 'id.localhost:8000'
 # OAUTH_SERVER_BASEURL = 'auth.localhost.com'
-# SOCIAL_AUTH_CUSTOM_KEY = 'j3JaoASDmwB6pvVbQRqIHKQrYqmkhiAvNYOjwtCE'
-# SOCIAL_AUTH_CUSTOM_SECRET = 'LbSPjabO7ZDJ2joeCkxEjT5scfVzw2REI8LZNYbcnnUfYpICfYJE8lnuUfyNCQFsgi09Ch6sKzASLmrjNKwEqMo0K2Cd8KAJZ6kbYDHy8hdVdMpUXBbVmS9YjkQfnYNR'
+# SOCIAL_AUTH_VARPAUTH_KEY = 'j3JaoASDmwB6pvVbQRqIHKQrYqmkhiAvNYOjwtCE'
+# SOCIAL_AUTH_VARPAUTH_SECRET = 'LbSPjabO7ZDJ2joeCkxEjT5scfVzw2REI8LZNYbcnnUfYpICfYJE8lnuUfyNCQFsgi09Ch6sKzASLmrjNKwEqMo0K2Cd8KAJZ6kbYDHy8hdVdMpUXBbVmS9YjkQfnYNR'
 
 # OAUTH_SERVER_BASEURL='auth.ei.team'
 # SOCIAL_AUTH_CUSTOM_KEY='FZTda7iyCCH8vtkaXG0Za6oo2YRxc0JSvKUvpl3N'
